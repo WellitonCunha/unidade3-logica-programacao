@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lógica de Programação — Decisão e Repetição em Python</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">LÓGICA DE PROGRAMAÇÃO</div>
+  <div>Python · Unidade 3</div>
+</header>
+
+<div class="progress">
+  <div class="bar" id="bar"></div>
+</div>
+
+<main>
+
+  <!-- Slide 1 · Capa -->
+  <section class="slide active">
+    <div class="eyebrow">Unidade 3 · Python</div>
+    <h1>Estruturas de decisão e de repetição</h1>
+    <p class="lead">Como fazer um programa escolher caminhos e executar tarefas repetidamente.</p>
+    <div class="tag-list">
+      <span class="tag">if / elif / else</span>
+      <span class="tag">for</span>
+      <span class="tag">while</span>
+      <span class="tag">Lógica aplicada</span>
+    </div>
+    <div class="prof">Prof. Esp. Welliton Cunha</div>
+  </section>
+
+  <!-- Slide 2 · Roteiro -->
+  <section class="slide">
+    <div class="eyebrow">Roteiro da aula</div>
+    <h2>O que vamos aprender?</h2>
+    <div class="grid">
+      <div class="card"><strong>3.1 · Decisão simples e composta</strong><p>Executar comandos conforme uma condição seja verdadeira ou falsa.</p></div>
+      <div class="card"><strong>3.2 · Decisão aninhada e múltipla escolha</strong><p>Combinar condições e selecionar entre várias alternativas.</p></div>
+      <div class="card"><strong>3.3 · Repetição com variável de controle</strong><p>Repetir uma quantidade conhecida de vezes usando <code>for</code>.</p></div>
+      <div class="card"><strong>3.4 · Repetição com teste no início</strong><p>Repetir enquanto uma condição permanecer verdadeira usando <code>while</code>.</p></div>
+    </div>
+    <div class="note">Objetivo geral: interpretar problemas, construir algoritmos e implementar soluções em Python.</div>
+  </section>
+
+  <!-- Slide 3 · Condições e lógica booleana -->
+  <section class="slide">
+    <div class="eyebrow">Antes de começar</div>
+    <h2>Condição, comparação e lógica booleana</h2>
+    <p>Uma condição é uma expressão que resulta em apenas dois valores: <code>True</code> (verdadeiro) ou <code>False</code> (falso).</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Operadores relacionais</h3>
+        <p><code>==</code> igual · <code>!=</code> diferente<br><code>&gt;</code> maior · <code>&lt;</code> menor<br><code>&gt;=</code> maior ou igual · <code>&lt;=</code> menor ou igual</p>
+      </div>
+      <div class="card">
+        <h3>Operadores lógicos</h3>
+        <p><code>and</code>: todas as condições verdadeiras<br><code>or</code>: pelo menos uma verdadeira<br><code>not</code>: inverte o resultado lógico</p>
+      </div>
+    </div>
+    <pre>idade = 20
+tem_documento = True
+
+print(idade >= 18)                 # True
+print(idade >= 18 and tem_documento) # True</pre>
+    <div class="note">Atenção: <code>=</code> atribui um valor; <code>==</code> compara dois valores.</div>
+  </section>
+
+  <!-- Slide 4 · Decisão simples -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Decisão simples</div>
+    <h2>Estrutura condicional <code>if</code></h2>
+    <p>A decisão simples executa um bloco somente quando a condição é verdadeira. Se for falsa, o bloco é ignorado.</p>
+    <pre>if condição:
+    comando
+    outro_comando</pre>
+    <h3>Exemplo: verificar maioridade</h3>
+    <pre>idade = int(input("Digite sua idade: "))
+
+if idade >= 18:
+    print("Maior de idade")
+
+print("Fim do programa")</pre>
+    <div class="note good">A indentação define quais instruções pertencem ao bloco do <code>if</code>. Em Python, use normalmente 4 espaços.</div>
+  </section>
+
+  <!-- Slide 5 · Fluxo da decisão simples -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Decisão simples</div>
+    <h2>Entendendo o fluxo</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Condição verdadeira</h3>
+        <p>Entrada: idade = 22</p>
+        <p><code>idade &gt;= 18</code> → True</p>
+        <p>Saída: “Maior de idade” e “Fim do programa”.</p>
+      </div>
+      <div class="card">
+        <h3>Condição falsa</h3>
+        <p>Entrada: idade = 16</p>
+        <p><code>idade &gt;= 18</code> → False</p>
+        <p>Saída: somente “Fim do programa”.</p>
+      </div>
+    </div>
+    <h3>Quando utilizar?</h3>
+    <ul>
+      <li>Validar uma condição antes de executar uma ação.</li>
+      <li>Verificar se há saldo suficiente.</li>
+      <li>Identificar se uma nota atingiu uma pontuação mínima.</li>
+    </ul>
+  </section>
+
+  <!-- Slide 6 · Decisão composta -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Decisão composta</div>
+    <h2><code>if</code> e <code>else</code></h2>
+    <p>A decisão composta oferece dois caminhos: um quando a condição é verdadeira e outro quando é falsa.</p>
+    <pre>if condição:
+    comandos_se_verdadeiro
+else:
+    comandos_se_falso</pre>
+    <h3>Exemplo: aprovado ou reprovado</h3>
+    <pre>nota = float(input("Informe a nota: "))
+
+if nota >= 7:
+    print("Aprovado")
+else:
+    print("Reprovado")</pre>
+    <p>Se a nota for 8.5, o programa exibe “Aprovado”. Se for 5.0, exibe “Reprovado”.</p>
+  </section>
+
+  <!-- Slide 7 · Operadores lógicos na decisão -->
+  <section class="slide">
+    <div class="eyebrow">3.1 · Decisão composta</div>
+    <h2>Mais de uma condição: operadores lógicos</h2>
+    <p>É possível combinar condições para representar regras mais completas.</p>
+    <pre>idade = int(input("Idade: "))
+matriculado = input("Está matriculado? (s/n): ")
+
+if idade >= 18 and matriculado == "s":
+    print("Acesso autorizado")
+else:
+    print("Acesso não autorizado")</pre>
+    <div class="grid">
+      <div class="card"><strong>and</strong><p>As duas condições precisam ser verdadeiras.</p></div>
+      <div class="card"><strong>or</strong><p>Basta uma das condições ser verdadeira.</p></div>
+    </div>
+    <div class="note">Dica: escreva a regra em português antes de traduzi-la para código. Isso reduz erros de lógica.</div>
+  </section>
+
+  <!-- Slide 8 · Decisão aninhada -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Decisão aninhada</div>
+    <h2>Uma decisão dentro de outra</h2>
+    <p>Uma estrutura aninhada ocorre quando um <code>if</code>, <code>elif</code> ou <code>else</code> contém outra estrutura de decisão.</p>
+    <h3>Exemplo: classificação de nota</h3>
+    <pre>nota = float(input("Nota (0 a 10): "))
+
+if nota >= 7:
+    if nota >= 9:
+        print("Aprovado com excelente desempenho")
+    else:
+        print("Aprovado")
+else:
+    print("Reprovado")</pre>
+    <p>Primeiro, o programa verifica se a nota é suficiente para aprovação. Se for, faz uma segunda análise.</p>
+    <div class="note">A indentação evidencia o nível de cada decisão. Uma decisão interna só é avaliada quando o fluxo alcança aquele bloco.</div>
+  </section>
+
+  <!-- Slide 9 · Múltipla escolha -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Múltipla escolha</div>
+    <h2>Usando <code>if</code>, <code>elif</code> e <code>else</code></h2>
+    <p>Quando existem várias alternativas, <code>elif</code> permite testar condições em sequência. O primeiro bloco verdadeiro é executado.</p>
+    <pre>nota = float(input("Informe a nota: "))
+
+if nota >= 9:
+    conceito = "A"
+elif nota >= 7:
+    conceito = "B"
+elif nota >= 5:
+    conceito = "C"
+else:
+    conceito = "D"
+
+print("Conceito:", conceito)</pre>
+    <div class="note good">A ordem importa! Comece pelas faixas mais altas. Depois que uma condição é atendida, as seguintes não são verificadas.</div>
+  </section>
+
+  <!-- Slide 10 · Menu de opções -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Múltipla escolha</div>
+    <h2>Menu de opções</h2>
+    <p>Uma aplicação comum é criar menus que direcionam o usuário para diferentes operações.</p>
+    <pre>print("1 - Cadastrar")
+print("2 - Consultar")
+print("3 - Sair")
+opcao = input("Escolha: ")
+
+if opcao == "1":
+    print("Cadastro selecionado")
+elif opcao == "2":
+    print("Consulta selecionada")
+elif opcao == "3":
+    print("Encerrando...")
+else:
+    print("Opção inválida")</pre>
+    <p>Observe que <code>input()</code> retorna texto. Por isso, as opções foram comparadas com strings como <code>"1"</code>.</p>
+  </section>
+
+  <!-- Slide 11 · Comparando estruturas de decisão -->
+  <section class="slide">
+    <div class="eyebrow">3.2 · Comparando estruturas</div>
+    <h2>Qual estrutura escolher?</h2>
+    <div class="grid">
+      <div class="card"><h3><code>if</code></h3><p>Uma condição independente. Ex.: mostrar um alerta se o estoque estiver baixo.</p></div>
+      <div class="card"><h3><code>if / else</code></h3><p>Dois caminhos mutuamente exclusivos. Ex.: aprovado ou reprovado.</p></div>
+      <div class="card"><h3>Aninhada</h3><p>Uma decisão depende de outra. Ex.: verificar categoria e, depois, uma regra específica.</p></div>
+      <div class="card"><h3><code>if / elif / else</code></h3><p>Várias alternativas em sequência. Ex.: conceito A, B, C ou D.</p></div>
+    </div>
+  </section>
+
+  <!-- Slide 12 · Laço for -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Repetição com variável de controle</div>
+    <h2>Laço <code>for</code></h2>
+    <p>O <code>for</code> é indicado quando percorremos uma sequência ou sabemos quantas repetições desejamos executar.</p>
+    <pre>for variavel in sequencia:
+    comandos</pre>
+    <h3>Exemplo: imprimir de 1 a 5</h3>
+    <pre>for numero in range(1, 6):
+    print(numero)</pre>
+    <p>Saída: 1, 2, 3, 4, 5. O limite final do <code>range()</code> não é incluído.</p>
+    <div class="note">A variável <code>numero</code> recebe um valor diferente a cada passagem pelo laço.</div>
+  </section>
+
+  <!-- Slide 13 · range() -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Entendendo range()</div>
+    <h2>Como funciona o <code>range()</code>?</h2>
+    <div class="grid">
+      <div class="card"><strong><code>range(5)</code></strong><p>Gera 0, 1, 2, 3, 4.</p></div>
+      <div class="card"><strong><code>range(1, 6)</code></strong><p>Gera 1, 2, 3, 4, 5.</p></div>
+      <div class="card"><strong><code>range(0, 10, 2)</code></strong><p>Gera 0, 2, 4, 6, 8.</p></div>
+      <div class="card"><strong><code>range(10, 0, -1)</code></strong><p>Gera 10 até 1, em ordem decrescente.</p></div>
+    </div>
+    <pre># Tabuada do 7
+for i in range(1, 11):
+    print(f"7 x {i} = {7 * i}")</pre>
+  </section>
+
+  <!-- Slide 14 · Somatório -->
+  <section class="slide">
+    <div class="eyebrow">3.3 · Aplicação prática</div>
+    <h2>Somatório de valores</h2>
+    <p>Uma variável acumuladora guarda o resultado parcial ao longo das repetições.</p>
+    <pre>soma = 0
+
+for contador in range(1, 6):
+    valor = float(input(f"Digite o {contador}º valor: "))
+    soma = soma + valor
+
+print("Soma:", soma)
+print("Média:", soma / 5)</pre>
+    <h3>Conceitos importantes</h3>
+    <ul>
+      <li><strong>Contador:</strong> controla ou identifica as repetições.</li>
+      <li><strong>Acumulador:</strong> guarda um total que é atualizado a cada ciclo.</li>
+      <li><strong>Inicialização:</strong> atribui o valor inicial antes do laço.</li>
+    </ul>
+    <div class="note">Neste exemplo, o laço executa exatamente cinco vezes.</div>
+  </section>
+
+  <!-- Slide 15 · Laço while -->
+  <section class="slide">
+    <div class="eyebrow">3.4 · Teste no início</div>
+    <h2>Laço <code>while</code></h2>
+    <p>O <code>while</code> repete um bloco enquanto a condição for verdadeira. A condição é testada antes de cada execução.</p>
+    <pre>while condição:
+    comandos</pre>
+    <h3>Exemplo: contagem</h3>
+    <pre>contador = 1
+
+while contador <= 5:
+    print(contador)
+    contador = contador + 1</pre>
+    <p>O programa imprime de 1 a 5. Quando o contador chega a 6, a condição fica falsa e o laço termina.</p>
+    <div class="note good">Atualizar a variável de controle é essencial quando ela participa da condição do <code>while</code>.</div>
+  </section>
+
+  <!-- Slide 16 · Validação com while -->
+  <section class="slide">
+    <div class="eyebrow">3.4 · Teste no início</div>
+    <h2>Validação de entrada com <code>while</code></h2>
+    <p>O <code>while</code> é útil quando não sabemos previamente quantas tentativas serão necessárias.</p>
+    <pre>senha = input("Crie uma senha com 6 caracteres: ")
+
+while len(senha) < 6:
+    print("Senha muito curta. Tente novamente.")
+    senha = input("Digite outra senha: ")
+
+print("Senha cadastrada!")</pre>
+    <h3>Outro exemplo: repetir até uma opção válida</h3>
+    <pre>opcao = ""
+
+while opcao != "s" and opcao != "n":
+    opcao = input("Continuar? (s/n): ").lower()
+
+print("Resposta registrada:", opcao)</pre>
+  </section>
+
+  <!-- Slide 17 · for x while -->
+  <section class="slide">
+    <div class="eyebrow">3.3 × 3.4 · Comparação</div>
+    <h2><code>for</code> ou <code>while</code>?</h2>
+    <div class="grid">
+      <div class="card">
+        <h3><code>for</code></h3>
+        <ul>
+          <li>Quantidade conhecida ou sequência definida.</li>
+          <li>Itera sobre itens de uma coleção ou intervalo.</li>
+          <li>Ex.: calcular a média de 30 alunos.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><code>while</code></h3>
+        <ul>
+          <li>Repetição depende de uma condição.</li>
+          <li>Quantidade de ciclos pode ser desconhecida.</li>
+          <li>Ex.: solicitar senha até ser válida.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">Ambos podem resolver alguns mesmos problemas. A escolha deve priorizar clareza, segurança e adequação à lógica.</div>
+  </section>
+
+  <!-- Slide 18 · Erros comuns -->
+  <section class="slide">
+    <div class="eyebrow">Cuidados importantes</div>
+    <h2>Erros comuns em estruturas de repetição</h2>
+    <ul>
+      <li><strong>Loop infinito:</strong> a condição do <code>while</code> nunca se torna falsa.</li>
+      <li><strong>Off-by-one:</strong> errar o início ou o limite do <code>range()</code>.</li>
+      <li><strong>Variável não inicializada:</strong> usar contador ou acumulador antes de atribuir um valor.</li>
+      <li><strong>Indentação incorreta:</strong> colocar uma instrução fora ou dentro do bloco errado.</li>
+      <li><strong>Condição inadequada:</strong> usar <code>and</code> quando a regra exige <code>or</code>, ou vice-versa.</li>
+    </ul>
+    <pre># Exemplo de loop infinito (não execute assim!)
+contador = 1
+while contador <= 5:
+    print(contador)
+    # faltou incrementar contador</pre>
+  </section>
+
+  <!-- Slide 19 · Exercício 1 -->
+  <section class="slide">
+    <div class="eyebrow">Prática guiada</div>
+    <h2>Exercício 1 · Decisão</h2>
+    <div class="question">
+      <strong>Enunciado:</strong> solicite a idade de uma pessoa. Se ela tiver menos de 16 anos, informe “Não pode votar”. Entre 16 e 17 ou acima de 70, informe “Voto facultativo”. Nos demais casos, informe “Voto obrigatório”.
+      <p>Implemente usando <code>if / elif / else</code>.</p>
+    </div>
+    <button class="btn-small" type="button" data-answer="a1">Mostrar sugestão de resposta</button>
+    <div class="answer" id="a1">
+      <pre>idade = int(input("Idade: "))
+
+if idade < 16:
+    print("Não pode votar")
+elif idade < 18 or idade > 70:
+    print("Voto facultativo")
+else:
+    print("Voto obrigatório")</pre>
+      <small>Observação: a regra considera voto facultativo também para maiores de 70 anos.</small>
+    </div>
+  </section>
+
+  <!-- Slide 20 · Exercício 2 -->
+  <section class="slide">
+    <div class="eyebrow">Prática guiada</div>
+    <h2>Exercício 2 · Repetição <code>for</code></h2>
+    <div class="question">
+      <strong>Enunciado:</strong> desenvolva um programa que leia 10 números e apresente ao final quantos são positivos, quantos são negativos e quantos são iguais a zero.
+    </div>
+    <button class="btn-small" type="button" data-answer="a2">Mostrar sugestão de resposta</button>
+    <div class="answer" id="a2">
+      <pre>positivos = 0
+negativos = 0
+zeros = 0
+
+for i in range(10):
+    numero = float(input("Digite um número: "))
+    if numero > 0:
+        positivos += 1
+    elif numero < 0:
+        negativos += 1
+    else:
+        zeros += 1
+
+print("Positivos:", positivos)
+print("Negativos:", negativos)
+print("Zeros:", zeros)</pre>
+    </div>
+  </section>
+
+  <!-- Slide 21 · Exercício 3 -->
+  <section class="slide">
+    <div class="eyebrow">Prática guiada</div>
+    <h2>Exercício 3 · Repetição <code>while</code></h2>
+    <div class="question">
+      <strong>Enunciado:</strong> faça um programa que solicite números inteiros ao usuário até que ele digite 0. Ao final, mostre a soma dos números informados, sem incluir o zero.
+    </div>
+    <button class="btn-small" type="button" data-answer="a3">Mostrar sugestão de resposta</button>
+    <div class="answer" id="a3">
+      <pre>soma = 0
+numero = int(input("Digite um número (0 encerra): "))
+
+while numero != 0:
+    soma += numero
+    numero = int(input("Digite outro número (0 encerra): "))
+
+print("Soma:", soma)</pre>
+      <small>O teste ocorre antes de cada repetição. Se o primeiro valor for 0, o laço não executa.</small>
+    </div>
+  </section>
+
+  <!-- Slide 22 · Questões objetivas -->
+  <section class="slide">
+    <div class="eyebrow">Fixação · Questões objetivas</div>
+    <h2>Teste seus conhecimentos</h2>
+    <div class="question">
+      <strong>1.</strong> Qual palavra-chave executa um bloco somente se uma condição for verdadeira?
+      <p>A) for &nbsp; B) if &nbsp; C) while &nbsp; D) print &nbsp; E) input</p>
+      <button class="btn-small" type="button" data-answer="q1">Ver gabarito</button>
+      <div class="answer" id="q1">Alternativa B — if.</div>
+    </div>
+    <div class="question">
+      <strong>2.</strong> Qual é a saída de <code>list(range(2, 6))</code>?
+      <p>A) [2,3,4,5,6] &nbsp; B) [1,2,3,4,5] &nbsp; C) [2,3,4,5] &nbsp; D) [2,6] &nbsp; E) [3,4,5,6]</p>
+      <button class="btn-small" type="button" data-answer="q2">Ver gabarito</button>
+      <div class="answer" id="q2">Alternativa C — o limite final 6 não é incluído.</div>
+    </div>
+    <div class="question">
+      <strong>3.</strong> Qual estrutura é geralmente adequada quando a repetição depende de uma condição e não sabemos o número de ciclos?
+      <p>A) if &nbsp; B) elif &nbsp; C) else &nbsp; D) while &nbsp; E) range</p>
+      <button class="btn-small" type="button" data-answer="q3">Ver gabarito</button>
+      <div class="answer" id="q3">Alternativa D — while.</div>
+    </div>
+  </section>
+
+  <!-- Slide 23 · Desafio integrador -->
+  <section class="slide">
+    <div class="eyebrow">Desafio integrador</div>
+    <h2>Sistema de notas da turma</h2>
+    <p>Desenvolva um programa que:</p>
+    <ol>
+      <li>Leia a quantidade de alunos.</li>
+      <li>Para cada aluno, leia nome e nota de 0 a 10.</li>
+      <li>Valide a nota: se estiver fora do intervalo, solicite novamente.</li>
+      <li>Classifique: aprovado (nota ≥ 7), recuperação (5 ≤ nota &lt; 7) ou reprovado (nota &lt; 5).</li>
+      <li>Ao final, apresente a quantidade em cada situação e a média geral.</li>
+    </ol>
+    <div class="note">Requisitos: use <code>for</code> para percorrer os alunos, <code>while</code> para validar a nota e <code>if / elif / else</code> para classificar.</div>
+    <p><strong>Discussão:</strong> quais variáveis precisam ser inicializadas? Qual estrutura controla cada parte do algoritmo?</p>
+  </section>
+
+  <!-- Slide 24 · Encerramento -->
+  <section class="slide">
+    <div class="eyebrow">Encerramento</div>
+    <h2>Resumo da unidade</h2>
+    <ul>
+      <li><code>if</code>: decisão simples.</li>
+      <li><code>if / else</code>: dois caminhos possíveis.</li>
+      <li><code>if / elif / else</code>: múltiplas alternativas.</li>
+      <li>Decisões aninhadas: uma decisão dentro de outra.</li>
+      <li><code>for</code>: repetição sobre uma sequência ou intervalo.</li>
+      <li><code>while</code>: repetição enquanto a condição for verdadeira, com teste no início.</li>
+    </ul>
+    <div class="card">
+      <strong>Para refletir</strong>
+      <p>Como você combinaria decisões e repetições para criar um sistema de caixa eletrônico, cadastro de alunos ou controle de acesso?</p>
+    </div>
+    <div class="prof">Prof. Esp. Welliton Cunha</div>
+    <p class="lead">Pratique, teste diferentes entradas e acompanhe o fluxo do algoritmo.</p>
+  </section>
+
+</main>
+
+<footer class="controls">
+  <button class="secondary" type="button" id="prev">← Voltar</button>
+  <div class="status">
+    <div class="counter" id="counter">1 / 24</div>
+    <div class="key">Use ← e → do teclado</div>
+  </div>
+  <button class="primary" type="button" id="next">Próximo →</button>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
